@@ -271,7 +271,7 @@ int main() {
 
 **不要慌，这里有两种方法:**
 
-- 在基类中的public下，添加方法getPrivateValue()。如下：
+- **在基类中的public下，添加方法getPrivateValue()。如下：**
 
 ```C++
 public:
@@ -279,7 +279,7 @@ const int& getPrivateValue();
 ```
 **这里返回一个const引用：保护基类的private成员不能被修改，同时用引用是数据传递比reference-to-value更高效。**
 
-- 使用友元。在A类中，声明PublicB、ProtectedB、PrivateB为A类的友元。如下：
+- **使用友元。在A类中，声明PublicB、ProtectedB、PrivateB为A类的友元。如下：**
 ```C++
 friend class PublicB;
 friend class ProtectedB;
