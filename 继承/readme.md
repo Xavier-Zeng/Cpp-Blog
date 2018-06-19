@@ -1,12 +1,15 @@
-#public、protected、private继承的区别
-##写在前面
+# public、protected、private继承的区别
+
+## 写在前面
+
 在学习C++时经常会混淆public、protected、private在继承中的概念，于是写在此博客加深理解。
 首先记住以下三点：
 - **用户代码（类外）只能访问public成员变量和public成员函数。**
 - **子类（继承类）能访问基类的public和protected成员（包括变量和函数），但不能访问基类的private成员（包括变量和函数），本质原因为基类的private变量不能被继承。**
 - **private成员只能被类内成员和友元friend成员访问。**
-##一、具体实例
-###1.1首先，我们创建一个基类A
+## 一、具体实例
+### 1.1首先，我们创建一个基类A
+
 **A.h中的代码:**
 ```C++
 #pragma once
@@ -55,7 +58,8 @@ void A::funA()
 }
 ```
 >我们可以看出，在A类中，有一个public成员变量publicValue，一个protectd成员变量protectedValue，一个private成员变量privateValue。同时，还有一个public成员函数funA，我们用此函数打印输出A类的成员变量。
-###1.2使用public继承方式，创建一个子类（继承类）PublicB
+### 1.2使用public继承方式，创建一个子类（继承类）PublicB
+
 **PublicB.h中的代码**
 ```C++
 #pragma once
@@ -100,7 +104,8 @@ PublicB::~PublicB() {
 
 ```
 >我们可以看出，在PublicB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出PublicB类的成员变量。
-###1.3使用protected方式，创建一个子类ProtectedB
+### 1.3使用protected方式，创建一个子类ProtectedB
+
 **ProtectedB.h中的代码**
 ```C++
 #pragma once
@@ -143,7 +148,8 @@ ProtectedB::~ProtectedB() {
 ```
 >我们可以看出，在ProtectedB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出ProtectedB类的成员变量。
 
-###1.4使用private方式，创建一个子类PrivateB
+### 1.4使用private方式，创建一个子类PrivateB
+
 **PrivateB.h中的代码**
 ```C++
 #pragma once
@@ -186,7 +192,8 @@ PrivateB::~PrivateB() {
 
 ```
 >我们可以看出，在PrivateB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出PrivateB类的成员变量。
-###1.5我们创建main.cpp来测试我们的类
+### 1.5我们创建main.cpp来测试我们的类
+
 **main.cpp中的代码**
 ```C++
 #include"A.h"
@@ -246,8 +253,11 @@ int main() {
 }
 ```
 **运行结果如下：**
+
 ![](./result.jpg)
+
 **因此，我们可以总结以下几点：**
+
 - **子类可以访问基类的public成员、protected成员，但具体的值发生了变化？**
 - **public、protected、private方式继承后,成员属性的变化如下表：**
 
@@ -258,13 +268,17 @@ int main() {
  private | 不能继承 | 不能继承 | 不能继承 
  
  >那么，问题来了？如果我们非要访问基类的private成员，该怎么实现呢？
+
 **不要慌，这里有两种方法:**
+
 - 在基类中的public下，添加方法getPrivateValue()。如下：
+
 ```C++
 public:
 const int& getPrivateValue();
 ```
 **这里返回一个const引用：保护基类的private成员不能被修改，同时用引用是数据传递比reference-to-value更高效。**
+
 - 使用友元。在A类中，声明PublicB、ProtectedB、PrivateB为A类的友元。如下：
 ```C++
 friend class PublicB;
