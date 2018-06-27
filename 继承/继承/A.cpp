@@ -21,6 +21,10 @@ void A::funA()
 	std::cout << "privateValue = " << privateValue << std::endl;//正确，类内访问private成员
 }
 
+void A::setPrivateValue(int pv) {
+	privateValue = pv;
+}
+
 const int & A::getPrivateValue() {
 	return privateValue;
 	// TODO: 在此处插入 return 语句

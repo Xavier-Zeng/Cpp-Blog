@@ -9,7 +9,7 @@ class PrivateB :
 	private A {
 public:
 	int publicValueB;//ProtectedBµÄpublic³ÉÔ±
-	PrivateB(int pbV);
+	PrivateB(int pbV, int ptV, int pvV, int pbVB);
 	void funB();
 	PrivateB();
 	~PrivateB();

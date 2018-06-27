@@ -27,6 +27,9 @@
     <ClInclude Include="PrivateB.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="B.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="A.cpp">
@@ -42,6 +45,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PrivateB.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="B.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
