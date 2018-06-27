@@ -13,7 +13,7 @@ class PublicB :
 public:
 	int publicValueB;//PublicBµÄpublic³ÉÔ±
 	PublicB();
-	PublicB(int pbV);
+	PublicB(int pbV, int ptV, int pvV, int pbVB);
 	void funB();
 	~PublicB();
 };

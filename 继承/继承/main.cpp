@@ -16,7 +16,7 @@ int main() {
 
 	/*二、测试PublicB类的public、protected、private成员*/
 	std::cout << "二、测试PublicB类的public、protected、private成员" << std::endl;
-	PublicB m_publicB(4);
+	PublicB m_publicB(1,2,10,4);
 	m_publicB.funB();//正确，类外用户访问PublicB的public成员函数
 	std::cout << "m_publicB.publicValueB = " << m_publicB.publicValueB << std::endl;//正确，类外用户访问PublicB的public成员
 	std::cout << "m_publicB.publicValue = " << m_publicB.publicValue << std::endl;//正确，类外用户访问PublicB继承A来的public成员,,但是值是多少呢？

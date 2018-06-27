@@ -1,8 +1,9 @@
 #pragma once
-#include "A.h"
-#include<iostream>
 #ifndef PRIVATEB_H
 #define PRIVATEB_H
+#include "A.h"
+#include<iostream>
+
 
 class PrivateB :
 	private A {

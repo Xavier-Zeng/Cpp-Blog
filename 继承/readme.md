@@ -5,7 +5,7 @@
 在学习C++时经常会混淆public、protected、private在继承中的概念，于是写在此博客加深理解。
 首先记住以下三点：
 - **用户代码（类外）只能访问public成员变量和public成员函数。**
-- **子类（继承类）能访问基类的public和protected成员（包括变量和函数），但不能访问基类的private成员（包括变量和函数），本质原因为基类的private变量不能被继承。**
+- **子类（继承类）能访问基类的public和protected成员（包括变量和函数），但不能访问基类的private成员（包括变量和函数），本质原因不是基类的private变量不能被继承，而是基类的private成员不能被子类直接访问。但可以通过在基类中增加一个`public函数`用来返回基类的private成员，再在子类用调用该public函数来访问基类的private成员。**
 - **private成员只能被类内成员和友元friend成员访问。**
 ## 一、具体实例
 ### 1.1首先，我们创建一个基类A
@@ -96,14 +96,14 @@ void PublicB::funB() {
 	std::cout << "publicValueB = " << publicValueB << std::endl;//正确，public成员
 	std::cout << "publicValue = " << publicValue << std::endl;//正确，public继承类访问基类的public成员,但值是多少呢？
 	std::cout << "protectedValue = " << protectedValue << std::endl;//正确，public继承类访问基类的protected成员，但值是多少呢？
-	//std::cout << "privateValue = " << privateValue << std::endl;//错误，继承类不能访问基类的private成员,本质上是基类的私有成员不能被继承
+	//std::cout << "privateValue = " << privateValue << std::endl;//错误，继承类不能访问基类的private成员
 }
 
 PublicB::~PublicB() {
 }
 
 ```
->我们可以看出，在PublicB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出PublicB类的成员变量。
+>我们可以看出，在PublicB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue，一个private成员变量privateValue(但不能再子类中访问)。同时，还有一个public成员函数funB，我们用此函数打印输出PublicB类的成员变量。
 ### 1.3使用protected方式，创建一个子类ProtectedB
 
 **ProtectedB.h中的代码**
@@ -140,13 +140,13 @@ void ProtectedB::funB() {
 	std::cout << "publicValueB = " << publicValueB << std::endl;//正确，public成员
 	std::cout << "publicValue = " << publicValue << std::endl;//正确，基类public成员,在派生类中变成了protected,可以被派生类访问。但是值是多少呢？
 	std::cout << "protectedValue = " << protectedValue << std::endl;//正确，基类protected成员,在派生类中变成了protected,可以被派生类访问。但是值是多少呢？
-	//std::cout << "privateValue = " << privateValue << std::endl;//错误，基类private成员,不能被派生类访问。本质上是基类的私有成员不能被继承。
+	//std::cout << "privateValue = " << privateValue << std::endl;//错误，基类private成员,不能被派生类访问。
 }
 
 ProtectedB::~ProtectedB() {
 }
 ```
->我们可以看出，在ProtectedB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出ProtectedB类的成员变量。
+>我们可以看出，在ProtectedB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue，一个private成员变量privateValue(但不能再子类中访问)。同时，还有一个public成员函数funB，我们用此函数打印输出ProtectedB类的成员变量。
 
 ### 1.4使用private方式，创建一个子类PrivateB
 
@@ -180,7 +180,7 @@ void PrivateB::funB() {
 	std::cout << "publicValueB = " << publicValueB << std::endl;//正确，public成员
 	std::cout << "publicValue = " << publicValue << std::endl;//正确，基类public成员,在派生类中变成了private,可以被派生类访问。但是值是多少呢？
 	std::cout << "protectedValue = " << protectedValue << std::endl;//正确，基类protected成员,在派生类中变成了private,可以被派生类访问。但是值是多少呢？
-	//std::cout << "privateValue = " << privateValue << std::endl;//错误，基类private成员,不能被派生类访问。本质上是基类的私有成员不能被继承。
+	//std::cout << "privateValue = " << privateValue << std::endl;//错误，基类private成员,不能被派生类访问。
 }
 
 PrivateB::PrivateB() {
@@ -191,7 +191,7 @@ PrivateB::~PrivateB() {
 }
 
 ```
->我们可以看出，在PrivateB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue。同时，还有一个public成员函数funB，我们用此函数打印输出PrivateB类的成员变量。
+>我们可以看出，在PrivateB类中，有两个public成员变量publicValueB、从A中继承而来的publicValue，一个protectd成员变量protectedValue，一个private成员变量privateValue(但不能再子类中访问)。同时，还有一个public成员函数funB，我们用此函数打印输出PrivateB类的成员变量。
 ### 1.5我们创建main.cpp来测试我们的类
 
 **main.cpp中的代码**
@@ -258,7 +258,7 @@ int main() {
 
 **因此，我们可以总结以下几点：**
 
-- **子类可以访问基类的public成员、protected成员，但具体的值发生了变化？**
+- **子类可以访问基类的public成员、protected成员，由于子类的构造函数中没有对基类成员初始化，所以默认构造函数自动初始化。**
 - **public、protected、private方式继承后,成员属性的变化如下表：**
 
  基类成员属性 | public继承的子类成员属性 | protected继承的子类成员属性 | private继承的子类成员的属性 
