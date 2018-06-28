@@ -9,7 +9,7 @@ class ProtectedB :
 public:
 	int publicValueB;//ProtectedBµÄpublic³ÉÔ±
 	ProtectedB();
-	ProtectedB(int pbV);
+	ProtectedB(int pbV, int ptV, int pvV, int pbVB);
 	void funB();
 	~ProtectedB();
 };

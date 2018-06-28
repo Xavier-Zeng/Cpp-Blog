@@ -2,6 +2,7 @@
 #include"PublicB.h"
 #include"ProtectedB.h"
 #include"PrivateB.h"
+#include"B.h"
 #include<iostream>
 int main() {
 	/*一、测试A类的public、protected、private成员*/
@@ -16,7 +17,7 @@ int main() {
 
 	/*二、测试PublicB类的public、protected、private成员*/
 	std::cout << "二、测试PublicB类的public、protected、private成员" << std::endl;
-	PublicB m_publicB(1,2,10,4);
+	PublicB m_publicB(1,2,10,4);//10为PublicB类的private变量
 	m_publicB.funB();//正确，类外用户访问PublicB的public成员函数
 	std::cout << "m_publicB.publicValueB = " << m_publicB.publicValueB << std::endl;//正确，类外用户访问PublicB的public成员
 	std::cout << "m_publicB.publicValue = " << m_publicB.publicValue << std::endl;//正确，类外用户访问PublicB继承A来的public成员,,但是值是多少呢？
@@ -27,7 +28,7 @@ int main() {
 
 	/*三、测试ProtectedB类的public、protected、private成员*/
 	std::cout << "三、测试ProtectedB类的public、protected、private成员" << std::endl;
-	ProtectedB m_protectedB(5);
+	ProtectedB m_protectedB(1,2,11,5);//11为ProtectedB类的private变量
 	m_protectedB.funB();//正确，类外用户访问ProtectedB的public成员函数
 	std::cout << "m_protectedB.publicValueB = " << m_protectedB.publicValueB << std::endl;//正确，类外用户访问ProtectedB的public成员
 	//这里，类外用户访问ProtectedB继承A来的public成员,但在ProtectedB类中变成了protected成员
@@ -40,7 +41,7 @@ int main() {
 
 	/*四、测试PrivateB类的public、protected、private成员*/
 	std::cout << "四、测试PrivateB类的public、protected、private成员" << std::endl;
-	PrivateB m_privateB(6);
+	PrivateB m_privateB(1,2,12,6);//12为PrivateB类的private变量
 	m_privateB.funB();//正确，类外用户访问ProtectedB的public成员函数
 	std::cout << "m_privateB.publicValueB = " << m_privateB.publicValueB << std::endl;//正确，类外用户访问m_privateB的public成员
 	//这里，类外用户访问m_privateB继承A来的public成员,但在m_privateB类中变成了private成员
@@ -50,6 +51,11 @@ int main() {
 	std::cout << "sizeof(m_privateB) = " << sizeof(m_privateB) << std::endl;
 	std::cout << "------------------华丽的分割线------------------" << std::endl << std::endl;
 	
+	/*五、测试B类来改变A类的private成员*/
+	std::cout << "五、测试B类来改变A类的private成员" << std::endl;
+	B b;
+	b.print();
 	system("pause");
+	std::cout << "------------------华丽的分割线------------------" << std::endl << std::endl;
 	return 0;
 }

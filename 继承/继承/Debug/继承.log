@@ -1,19 +1,9 @@
 ﻿  PublicB.cpp
-e:\gitworkstation\cpp-blog\继承\继承\a.h(7): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\a.h(20): error C2653: “PublicB”: 不是类或命名空间名称
   ProtectedB.cpp
-e:\gitworkstation\cpp-blog\继承\继承\a.h(7): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\a.h(20): error C2653: “PublicB”: 不是类或命名空间名称
   PrivateB.cpp
-e:\gitworkstation\cpp-blog\继承\继承\a.h(7): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\a.h(20): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\privateb.cpp(12): error C2248: “A::privateValue”: 无法访问 private 成员(在“A”类中声明)
-  e:\gitworkstation\cpp-blog\继承\继承\a.h(18): note: 参见“A::privateValue”的声明
-  e:\gitworkstation\cpp-blog\继承\继承\a.h(5): note: 参见“A”的声明
   main.cpp
-e:\gitworkstation\cpp-blog\继承\继承\a.h(7): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\a.h(20): error C2653: “PublicB”: 不是类或命名空间名称
+  B.cpp
   A.cpp
-e:\gitworkstation\cpp-blog\继承\继承\a.h(7): error C2653: “PublicB”: 不是类或命名空间名称
-e:\gitworkstation\cpp-blog\继承\继承\a.h(20): error C2653: “PublicB”: 不是类或命名空间名称
   正在生成代码...
+  继承.vcxproj -> E:\GitWorkstation\C++ Blog\继承\Debug\继承.exe
+  继承.vcxproj -> E:\GitWorkstation\C++ Blog\继承\Debug\继承.pdb (Full PDB)
