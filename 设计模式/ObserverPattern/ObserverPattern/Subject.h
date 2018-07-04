@@ -1,23 +1,23 @@
 #pragma once
 #ifndef SUBJECT_H
+#define SUBJECT_H
+
 #include <memory>
 class Observer;//前置声明
-//定义一个主题Subject的接口类
+//定义一个主题Subject的抽象接口类
 class Subject {
 public:
 	Subject();
-	~Subject();
-	virtual void registerObserver(std::shared_ptr<Observer> pObserver) const = 0;
-	virtual void removeObserver(std::shared_ptr<Observer> pObserver) const = 0;
-	virtual void notifyObserver(std::shared_ptr<Observer> pObserver) const = 0;
-private:
-	std::shared_ptr<Observer> pObserver;//拥有一个指向Observer的智能指针成员
+	virtual ~Subject();
+	virtual void registerObserver(Observer &rhs) = 0;
+	virtual void removeObserver(Observer &rhs)= 0;
+	virtual void notifyObserver() = 0;
 };
 
 
 #endif // !SUBJECT_H
 
-#define SUBJECT_H
+
 
 
 
