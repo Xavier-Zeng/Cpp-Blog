@@ -1,3 +1,13 @@
-﻿  main.cpp
-  ObserverPattern.vcxproj -> E:\GitWorkstation\C++ Blog\设计模式\ObserverPattern\Debug\ObserverPattern.exe
-  ObserverPattern.vcxproj -> E:\GitWorkstation\C++ Blog\设计模式\ObserverPattern\Debug\ObserverPattern.pdb (Full PDB)
+﻿  WeatherDate.cpp
+  Subject.cpp
+  StatisticsDisplay.cpp
+  Observer.cpp
+  main.cpp
+e:\gitworkstation\c++ blog\设计模式\observerpattern\observerpattern\forecastdisplay.h(19): error C2664: “void WeatherDate::registerObserver(Observer &)”: 无法将参数 1 从“const ForecastDisplay”转换为“Observer &”
+  e:\gitworkstation\c++ blog\设计模式\observerpattern\observerpattern\forecastdisplay.h(19): note: 转换丢失限定符
+  ForecastDisplay.cpp
+e:\gitworkstation\c++ blog\设计模式\observerpattern\observerpattern\forecastdisplay.h(19): error C2664: “void WeatherDate::registerObserver(Observer &)”: 无法将参数 1 从“const ForecastDisplay”转换为“Observer &”
+  e:\gitworkstation\c++ blog\设计模式\observerpattern\observerpattern\forecastdisplay.h(19): note: 转换丢失限定符
+  DisplayElement.cpp
+  CurrentConditionDisplay.cpp
+  正在生成代码...

@@ -7,7 +7,7 @@ CurrentConditionDisplay::CurrentConditionDisplay() {
 
 
 CurrentConditionDisplay::~CurrentConditionDisplay() {
-	//指针指针不需要手动delete
+	//智能指针不需要手动delete
 	/*delete weatherData;*/
 }
 

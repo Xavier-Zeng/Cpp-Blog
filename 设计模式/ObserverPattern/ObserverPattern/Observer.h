@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef OBSERVER_H
 #define OBSERVER_H
 //则是一个观察者Observer的抽象接口类

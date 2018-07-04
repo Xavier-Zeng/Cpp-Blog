@@ -28,8 +28,5 @@ private:
 	//智能指针数组（数组中的每一个成员都是一个指向Observer对象的智能指针）
 	std::vector<std::shared_ptr<Observer>> vpOberbers;
 };
-
-
-
 #endif // !WEATHERDATA_H
 

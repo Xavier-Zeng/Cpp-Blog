@@ -22,13 +22,14 @@ WeatherDate::~WeatherDate() {
 //}
 
 void WeatherDate::registerObserver(Observer& rhs) {
-	std::shared_ptr<Observer> pObserver(&rhs);
+	//注册为观察者
+	std::shared_ptr<Observer> pObserver(&rhs);//转换为智能指针类型
 	vpOberbers.push_back(pObserver);
 }
 
 void WeatherDate::removeObserver(Observer& rhs) {
 	//取消订阅
-	std::shared_ptr<Observer> pObserver(&rhs);
+	std::shared_ptr<Observer> pObserver(&rhs);//转换为智能指针类型
 	if (!vpOberbers.empty()) {
 		for (auto iter = vpOberbers.begin(); iter != vpOberbers.end(); ++iter) {
 			if (*iter == pObserver)
@@ -41,7 +42,8 @@ void WeatherDate::removeObserver(Observer& rhs) {
 }
 
 void WeatherDate::notifyObserver() {
-	//使用auto遍历每一个成员
+	//通知每一个观察者
+	//使用auto遍历每一个成员，注意这里要用引用！
 	for (auto &i : vpOberbers) {
 		i->update(temperature, humidity, pressure);
 	}
